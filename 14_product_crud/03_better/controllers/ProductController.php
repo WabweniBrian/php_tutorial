@@ -17,6 +17,15 @@ class ProductController
     }
 
 
+    public function single(Router $router)
+    {
+        $id = $_GET['id'] ?? null;
+        if (!$id) header('Location: /');
+        $product = $router->db->find($id);
+        return $router->view('products/singleProduct', ['doc_title' => $product['title'], 'product' => $product]);
+    }
+
+
     /**Show & Save products to the database */
     public function save(Router $router)
     {
@@ -77,7 +86,11 @@ class ProductController
     public function delete(Router $router)
     {
         $id = $_POST['id'] ?? null;
+        $product = $router->db->find($id);
         $router->db->destory($id);
+        // Delete Image and folder associated
+        unlink($product['image']);
+        rmdir(dirname($product['image']));
         header('Location:  / ');
     }
 }

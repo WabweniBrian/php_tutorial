@@ -14,42 +14,49 @@
     </form>
 
     <div class="p-2 shadow-sm rounded bg-white">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Create Date</th>
-                    <th scope="col">Actions</th>
-                </tr>
-            </thead>
-            <?php if ($products) : ?>
-            <tbody>
-                <?php foreach ($products as $i => $product) : ?>
-                <tr>
-                    <th scope="row"><?= $i + 1 ?></th>
-                    <td><img src="/<?= $product['image'] ?>" alt="" class="avatar">
-                    </td>
-                    <td><?= $product['title'] ?></td>
-                    <td>$<?= $product['price'] ?></td>
-                    <td><?= $product['create_date'] ?></td>
-                    <td>
-                        <a href="/products/update?id=<?= $product['id'] ?>"
-                            class="btn btn-sm btn-outline-primary">Edit</a>
-                        <form action="/products/delete" method="post" class="d-inline">
-                            <input name="id" type="hidden" value="<?= $product['id'] ?>">
-                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+        <div class="table table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Create Date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <?php if ($products) : ?>
+                <tbody>
+                    <?php foreach ($products as $i => $product) : ?>
+                    <tr>
+                        <th scope="row"><?= $i + 1 ?></th>
+                        <td><a href="/products/view?id=<?= $product['id'] ?>"><img src="/<?= $product['image'] ?>"
+                                    alt="" class="avatar"></a>
+                        </td>
+                        <td><?= $product['title'] ?></td>
+                        <td>$<?= $product['price'] ?></td>
+                        <td><?= $product['create_date'] ?></td>
+                        <td>
+                            <a href="/products/view?id=<?= $product['id'] ?>"
+                                class="btn btn-sm btn-outline-success">View</a>
+                            <a href="/products/update?id=<?= $product['id'] ?>"
+                                class="btn btn-sm btn-outline-primary">Edit</a>
+                            <form action="/products/delete" method="post" class="d-inline">
+                                <input name="id" type="hidden" value="<?= $product['id'] ?>">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
 
-                <?php endforeach; ?>
-                <?php else : ?>
+                    <?php endforeach; ?>
+                    <?php else : ?>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+
+        </div>
+
         <h1 class="text-center text-danger">No products</p>
             <?php endif; ?>
     </div>

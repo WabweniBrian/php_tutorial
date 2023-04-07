@@ -27,7 +27,11 @@ class Router
 
     public function resolve()
     {
-        $path = $_SERVER['PATH_INFO'] ?? '/';
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        if (strpos($path, '?') !== false) {
+            $path = substr($path, 0, strpos($path, '?'));
+        }
+
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method == 'GET') {

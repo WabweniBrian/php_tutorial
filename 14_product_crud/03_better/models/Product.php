@@ -44,8 +44,8 @@ class Product
             if ($this->imageFile && $this->imageFile['tmp_name']) {
 
                 if ($this->imagePath) {
-                    unlink(__DIR__ . '/../public/' . $this->imagePath);
-                    rmdir($this->imagePath);
+                    unlink($this->imagePath);
+                    rmdir(dirname($this->imagePath));
                 }
 
                 $this->imagePath = 'images/' . UtilHelper::randomString(10) . '/' . $this->imageFile['name'];

@@ -14,7 +14,7 @@ h1 {
   font-weight: 700;
 }
 
-img {
+img.avatar {
   width: 50px;
 }
 
@@ -30,4 +30,9 @@ img {
   width: 1px;
   height: 3rem;
   background: #ccc;
+}
+
+.table td,
+.table th {
+  white-space: nowrap !important;
 }

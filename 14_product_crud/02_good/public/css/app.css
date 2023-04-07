@@ -16,3 +16,8 @@ h1 {
 img {
   width: 50px;
 }
+
+.table td,
+.table th {
+  white-space: nowrap !important;
+}
