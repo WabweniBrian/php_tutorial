@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
-<main>
-    <?= $content ?>
-</main>
 
 <body>
+    <main>
+        <?= $content ?>
+    </main>
+
 </body>
 
 </html>
